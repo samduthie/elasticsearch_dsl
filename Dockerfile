@@ -1,7 +1,5 @@
 FROM python:3
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /src
-WORKDIR /src
-ADD requirements.txt /src/
+ADD requirements.txt .
 RUN pip install -r requirements.txt
-ADD . /src/
+WORKDIR /src

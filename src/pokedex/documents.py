@@ -25,32 +25,10 @@ class PokemonDocument(DocType):
 		fields = [
 		    'id',
 		    'name',
-		    'type',
+		    'type1',
+		    'type2',
+		    'total_stats',
+		    'generation',
+		    'is_legendary',
 		    'created',
 		]
-
-# @pokemon_index.doc_type
-# class PokemonDocument(DocType):
-
-#     id = fields.IntegerField(attr='id')
-
-#     poke_name = fields.KeywordField(
-#         analyzer=html_strip,
-#         fields={
-#             'raw': fields.KeywordField(analyzer='keyword'),
-#         }
-#     )
-
-#     type = fields.KeywordField(
-#         analyzer=html_strip,
-#         fields={
-#             'raw': fields.KeywordField(analyzer='keyword'),
-#         }
-#     )
-
-#     created = fields.DateField()
-#     modified = fields.DateField()
-#     pub_date = fields.DateField()
-
-#     class Meta:
-#     	model = pokemon_models.Pokemon

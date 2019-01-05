@@ -1,7 +1,17 @@
 version: '3'
 services:
-  db:
+  esdl_postgres:
+    container_name: 'esdl_postgres'
     image: postgres
+
+  elasticsearch:
+    container_name: 'elasticsearch-dsl'
+    image: 'elasticsearch:2.3'
+    ports:
+      - 9200:9200
+    networks: 
+      - dsl
+
   web:
     container_name: 'web'
     image: samduthie/django-elasticsearch-dsl
@@ -13,14 +23,9 @@ services:
     environment:
       - DEBUG=False
       - ES_HOST=elasticsearch
-    networks: 
-      - dsl
-
-  elasticsearch:
-    container_name: 'elasticsearch-dsl'
-    image: 'elasticsearch:2.3'
-    ports:
-      - 9200:9200
+    depends_on:
+      - esdl_postgres
+      - elasticsearch
     networks: 
       - dsl
 
@@ -30,6 +35,8 @@ services:
     ports:
       - 5601:5601
     external_links:
+      - elasticsearch
+    depends_on:
       - elasticsearch
     networks:
       - dsl
