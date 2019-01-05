@@ -22,19 +22,23 @@ class PokemonDocument(DocType):
 
     id = fields.IntegerField(attr='id')
 
-    name = fields.StringField(
+    name = fields.TextField(
         analyzer=html_strip,
         fields={
-            'raw': fields.StringField(analyzer='keyword'),
+            'raw': fields.TextField(analyzer='keyword'),
         }
     )
 
-    type = fields.StringField(
+    type = fields.TextField(
         analyzer=html_strip,
         fields={
-            'raw': fields.StringField(analyzer='keyword'),
+            'raw': fields.TextField(analyzer='keyword'),
         }
     )
+
+    created = fields.DateField()
+    modified = fields.DateField()
+    pub_date = fields.DateField()
 
     class Meta:
     	model = pokemon_models.Pokemon

@@ -3,8 +3,12 @@ from django.contrib import admin
 from django.db import models
 
 class Pokemon(models.Model):
-    name = models.TextField()
+    poke_name = models.TextField()
     type = models.TextField()
+
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    pub_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.name

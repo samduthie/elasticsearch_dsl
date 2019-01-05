@@ -49,13 +49,17 @@ class PokemonViewSet(DocumentViewSet):
         },
         'name': 'name.raw',
         'type': 'type.raw',
+
+        'created': 'created',
+        'modified': 'modified',
+        'pub_date': 'pub_date',
     }
  
     # Define ordering fields
     ordering_fields = {
         'id': 'id',
-        'name': 'title.raw',
-        'type': 'author_id',
+        'name': 'name.raw',
+        'type': 'type.raw',
     }
 
     # Specify default ordering
