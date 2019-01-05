@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: postgres
+  web:
+    container_name: 'web'
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/src
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - ES_HOST=elasticsearch
+    networks: 
+      - dsl
+
+  elasticsearch:
+    container_name: 'elasticsearch-dsl'
+    image: 'elasticsearch:2.3'
+    ports:
+      - 9200:9200
+    networks: 
+      - dsl
+
+  kibana:
+    container_name: kibana
+    image: kibana:4.4.0
+    ports:
+      - 5601:5601
+    external_links:
+      - elasticsearch
+    networks:
+      - dsl
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+
+networks:
+  dsl:
+    external: true
