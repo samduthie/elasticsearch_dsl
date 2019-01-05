@@ -8,5 +8,9 @@ class PokemonDocumentSerializer(DocumentSerializer):
         document = pokemon_documents.PokemonDocument
         fields = (
             'name',
-            'type',
-        ) 
+            'type1',
+            'type2',
+            'total_stats',
+            'generation',
+            'is_legendary',
+        )
