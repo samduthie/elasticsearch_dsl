@@ -4,7 +4,7 @@ services:
     image: postgres
   web:
     container_name: 'web'
-    build: .
+    image: samduthie/django-elasticsearch-dsl
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - ./src:/src
@@ -26,7 +26,7 @@ services:
 
   kibana:
     container_name: kibana
-    image: kibana-sense
+    image: samduthie/kibana-sense:latest
     ports:
       - 5601:5601
     external_links:

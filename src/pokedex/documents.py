@@ -19,26 +19,38 @@ html_strip = analyzer(
 
 @pokemon_index.doc_type
 class PokemonDocument(DocType):
+	class Meta:
+		model = pokemon_models.Pokemon
 
-    id = fields.IntegerField(attr='id')
+		fields = [
+		    'id',
+		    'name',
+		    'type',
+		    'created',
+		]
 
-    name = fields.TextField(
-        analyzer=html_strip,
-        fields={
-            'raw': fields.TextField(analyzer='keyword'),
-        }
-    )
+# @pokemon_index.doc_type
+# class PokemonDocument(DocType):
 
-    type = fields.TextField(
-        analyzer=html_strip,
-        fields={
-            'raw': fields.TextField(analyzer='keyword'),
-        }
-    )
+#     id = fields.IntegerField(attr='id')
 
-    created = fields.DateField()
-    modified = fields.DateField()
-    pub_date = fields.DateField()
+#     poke_name = fields.KeywordField(
+#         analyzer=html_strip,
+#         fields={
+#             'raw': fields.KeywordField(analyzer='keyword'),
+#         }
+#     )
 
-    class Meta:
-    	model = pokemon_models.Pokemon
+#     type = fields.KeywordField(
+#         analyzer=html_strip,
+#         fields={
+#             'raw': fields.KeywordField(analyzer='keyword'),
+#         }
+#     )
+
+#     created = fields.DateField()
+#     modified = fields.DateField()
+#     pub_date = fields.DateField()
+
+#     class Meta:
+#     	model = pokemon_models.Pokemon

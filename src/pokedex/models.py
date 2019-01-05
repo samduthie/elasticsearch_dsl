@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.db import models
 
 class Pokemon(models.Model):
-    poke_name = models.TextField()
+    name = models.TextField()
     type = models.TextField()
 
     created = models.DateTimeField(auto_now_add=True)
@@ -18,3 +18,4 @@ class Pokemon(models.Model):
 
 
 admin.site.register(Pokemon)
+
