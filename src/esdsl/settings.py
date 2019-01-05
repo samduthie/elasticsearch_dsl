@@ -28,8 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0']
 
 
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,12 +36,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Third apps
+    # Third party apps
     'rest_framework',
     'django_elasticsearch_dsl',
     'django_elasticsearch_dsl_drf',
+    'django_extensions',
 
-    # Our Apps
+    # Apps
     'pokedex',
 ]
 
@@ -140,5 +139,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100
 }
+
+SHELL_PLUS = "plain"
 
 
