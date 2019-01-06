@@ -4,6 +4,7 @@ from django.db import models
 
 class Pokemon(models.Model):
     name = models.TextField()
+    pokedex_index = models.IntegerField()
     type1 = models.TextField()
     type2 = models.TextField()
 

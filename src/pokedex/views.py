@@ -1,3 +1,6 @@
+from django.http import HttpResponse
+from django.views import *
+
 from django_elasticsearch_dsl_drf.constants import (
     LOOKUP_FILTER_RANGE,
     LOOKUP_QUERY_IN,
@@ -16,6 +19,27 @@ from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
  
 from pokedex import documents as pokemon_documents
 from pokedex import serializers as pokemon_serializers
+
+from pokedex.models import Pokemon
+
+
+def random_pokemon_image(request):
+	from pokedex.helpers import get_image
+
+	from random import randint
+	id = randint(0,799)
+
+	pokemon = None
+	while pokemon is None:
+		try:
+			pokemon = Pokemon.objects.get(pokedex_index=id)
+		except:
+			pass
+
+	html = "<a href='pokemon/?search={}'>".format(pokemon.name) + get_image(pokemon.name.lower()) + "</a>"
+
+	return HttpResponse(html)
+
 
 class PokemonViewSet(DocumentViewSet):
     document = pokemon_documents.PokemonDocument

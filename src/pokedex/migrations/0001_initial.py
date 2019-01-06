@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
             name='Pokemon',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('pokedex_id', models.IntegerField()),
                 ('name', models.TextField()),
                 ('type1', models.TextField()),
                 ('type2', models.TextField()),
