@@ -32,3 +32,57 @@ class PokemonDocument(DocType):
 		    'is_legendary',
 		    'created',
 		]
+
+
+@pokemon_index.doc_type
+class PokemonDocument(DocType):
+
+    id = fields.IntegerField(attr='id')
+
+    name = fields.TextField(
+        analyzer=html_strip,
+        fields={
+            'raw': fields.TextField(analyzer='keyword'),
+            'suggest': fields.CompletionField(),
+        }
+    )
+
+    type1 = fields.TextField(
+        analyzer=html_strip,
+        fields={
+            'raw': fields.TextField(analyzer='keyword'),
+        }
+    )
+
+    type2 = fields.TextField(
+        analyzer=html_strip,
+        fields={
+            'raw': fields.TextField(analyzer='keyword'),
+        }
+    )
+
+    total_stats = fields.TextField(
+        analyzer=html_strip,
+        fields={
+            'raw': fields.TextField(analyzer='keyword'),
+        }
+    )
+
+    generation = fields.TextField(
+        analyzer=html_strip,
+        fields={
+            'raw': fields.TextField(analyzer='keyword'),
+        }
+    )
+
+    is_legendary = fields.TextField(
+        analyzer=html_strip,
+        fields={
+            'raw': fields.TextField(analyzer='keyword'),
+        }
+    )
+
+    created = fields.DateField()
+
+    class Meta:
+        model = pokemon_models.Pokemon
