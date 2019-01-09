@@ -17,6 +17,22 @@ html_strip = analyzer(
     char_filter=["html_strip"]
 )
 
+# @pokemon_index.doc_type
+# class PokemonDocument(DocType):
+# 	class Meta:
+# 		model = pokemon_models.Pokemon
+
+# 		fields = [
+# 		    'id',
+# 		    'name',
+# 		    'type1',
+# 		    'type2',
+# 		    'total_stats',
+# 		    'generation',
+# 		    'is_legendary',
+# 		    'created',
+# 		]
+
 
 @pokemon_index.doc_type
 class PokemonDocument(DocType):

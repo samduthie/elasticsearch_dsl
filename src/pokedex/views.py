@@ -72,7 +72,12 @@ class PokemonViewSet(DocumentViewSet):
             ],
         },
         'name': 'name.raw',
-        'type': 'type.raw',
+        'type1': 'type1.raw',
+        'type2': 'type2.raw',
+
+        'total_stats': 'total_stats.raw',
+        'generation': 'generation.raw',
+        'is_legendary': 'is_legendary.raw',
 
         'created': 'created',
         'modified': 'modified',
