@@ -5,4 +5,6 @@ djangorestframework==3.8.2
 django-elasticsearch-dsl-drf==0.11
 ipython
 psycopg2
-django_extensions
+django-extensions==2.1.4
+requests==2.21.0
+pokebase==1.2.0
